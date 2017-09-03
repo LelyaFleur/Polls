@@ -45,7 +45,9 @@
             <!--   <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>-->
                <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "true">Votar</md-button>
             </div>
-            <p style ="font-size:18px;"><i>Aquesta consulta podrà ser votada entre els dies 12 de juny i 2 de juliol (ambdós inclosos).</i> </p> 
+          <!--  <p style ="font-size:18px;"><i>Aquesta consulta podrà ser votada entre els dies 12 de juny i 2 de juliol (ambdós inclosos).</i> </p>-->
+             <p style ="font-size:18px;"><i>El període per votar començarà el dijous 7 de setembre i finalitzà el diumenge 24
+de setembre (ambdós inclosos). </i> </p>
 </div> 
 <div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 2"  style ="margin-top:20px;">
 
