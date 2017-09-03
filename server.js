@@ -809,10 +809,10 @@
 
     function initServer() {
         // listen (start app with node server.js) ======================================
-        server = app.listen(7100); 
+        server = app.listen(7200); 
         io = require('socket.io').listen(server);
 
-        console.log("App listening on port 7100");
+        console.log("App listening on port 7200");
     }
 
     function checkStates(err, polls) {
