@@ -1,4 +1,4 @@
-<div>
+<div ng-cloak>
         <h2 style ="text-align: center; padding-top:20px;">PRESSUPOSTOS PARTICIPATIUS CASSÀ DE LA SELVA 2017</h2>  
         <h3 style ="text-align: center;">Selecciona un màxim de 3 propostes i vota! </h3>
         <div layout ="row" layout-align ="center center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
@@ -16,7 +16,7 @@
                     md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals"  ng-class ="getClass($index, proposal.checked)" ng-style="proposal.image != '' && {'background-image':'url(img/'+proposal.image+')'}" style ="height:100%!important; background-size: cover;">
                     <!-- style ="background-image: url({{proposal.imageUrl}});background-size: contain;" style ="background-image: url({{proposal.image}});background-size: cover;" -->
                    <md-grid-tile-header>
-                        <h3 ng-click="showProposalDialog($event, proposal, poll.state)"><b>{{proposal.short_title}}</b>
+                        <h3 ng-click="showProposalDialog($event, proposal, poll.state)"><b>{{proposal.short_title}} ({{proposal.cost}})</b>
                          
                         </h3>
                        
@@ -32,10 +32,10 @@
                         <p style ="padding:15px;margin-top:15px;"><i>{{proposal.title}}</i></p>  
                         <i ng-class= "checkPoll(proposal.checked)" style ="font-size: 84px!important;" ng-click = "proposal.checked = !proposal.checked;">done</i> 
                     </div>-->
-                    <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
+                   <!-- <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
                         
                         <p style="margin-top:5px;">{{proposal.cost}}</p>
-                    </md-grid-tile-footer>
+                    </md-grid-tile-footer>-->
                                  
                 </md-grid-tile>
             </md-grid-list>

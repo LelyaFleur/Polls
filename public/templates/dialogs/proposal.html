@@ -54,7 +54,7 @@
     <md-dialog-content>
       <div class="md-dialog-content">
       <div layout = "row" >
-         <h2>{{currentProposal.title}}</h2><span flex></span> <i class="material-icons" style ="font-size:64px;" ng-click = "checkProposal(currentProposal)" ng-show ="state === 1 || state === 0"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al cercle</md-tooltip>{{currentProposal.icon}}  </i>
+         <h2>{{currentProposal.title}}</h2><span flex></span> <i ng-class= "changeClick(currentProposal.checked)" style ="font-size:64px;" ng-click = "checkProposal(currentProposal)" ng-show ="state === 1 || state === 0"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al tick</md-tooltip>{{currentProposal.icon}}  </i>
        </div>
         
         

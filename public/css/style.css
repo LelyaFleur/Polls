@@ -525,8 +525,12 @@ input.radio-white[type=radio]:checked + label:before{
 }
 
 md-grid-tile md-grid-tile-header {
-  background: rgba(0, 0, 0, 0.68)!important;
-   }
+  background: rgba(0, 0, 0, 1)!important;
+}
+
+md-grid-tile md-grid-tile-footer {
+  background: rgba(0, 0, 0, 1)!important;
+}
 
  md-grid-list {
   margin: 8px; }
@@ -562,19 +566,19 @@ md-grid-tile md-grid-tile-header {
   background: #ff80ab; }
 
   .not_selected {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 
  md-grid-tile {
   transition: all 400ms ease-out 50ms; }
 
   .checked {
-    color: white;
+    
     font-size:124px!important;
  }
 
  .unchecked {
-    color: white;
+   color:  rgba(0,0,0,0.20)!important;
     font-size:124px!important;
  }
 

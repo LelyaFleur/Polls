@@ -51,7 +51,8 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
                 poll.chartObject.data = chartData;
               angular.forEach(poll.proposals, function(proposal) {
                 
-                proposal.icon = "radio_button_unchecked";
+              //  proposal.icon = "radio_button_unchecked";
+                proposal.icon = "done";
                 var euroSignIndex = proposal.cost.indexOf("€");
                 if(proposal.votes > 0 && euroSignIndex !== -1) {
                   poll.totalCost += Number(proposal.cost.slice(0, euroSignIndex))
@@ -387,19 +388,24 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
         
       });
 
-      if(numChecked < 6) {
+      if(numChecked < 3) {
         proposal.checked = !proposal.checked;
        if(proposal.checked) {
-            proposal.icon = "check_circle";
+           // proposal.icon = "check_circle";
+            proposal.icon = "done";
        }
         else {
-          proposal.icon = "radio_button_unchecked";
+           proposal.icon = "done";
+         // proposal.icon = "radio_button_unchecked";
+         
        }
       } else if(proposal.checked) {
         proposal.checked = !proposal.checked;
-        proposal.icon = "radio_button_unchecked";
+         proposal.icon = "done";
+       // proposal.icon = "radio_button_unchecked";
+        
       } else {
-        showAlert(ev, 'Atenciò', 'Només es poden seleccionar 6 propostes!')
+        showAlert(ev, 'Atenciò', 'Només es poden seleccionar 3 propostes!')
       }
   }
   
@@ -417,13 +423,21 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
       $mdDialog.hide();
     };
 
+    $scope.changeClick = function(checked) {
+    var classname = (checked) ? "material-icons md-64 checked" : "material-icons md-128 unchecked";
+
+        return classname;
+  }
+
     $scope.checkProposal = function(proposal) {
       proposal.checked = !proposal.checked;
       if(proposal.checked) {
-        proposal.icon = "check_circle";
+       // proposal.icon = "check_circle";
+        proposal.icon = "done";
       }
       else {
-        proposal.icon = "radio_button_unchecked";
+        proposal.icon = "done";
+        //proposal.icon = "radio_button_unchecked";
       }
 }
 
