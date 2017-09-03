@@ -1,0 +1,51 @@
+<div class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header dni-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"><i class="glyphicon glyphicon-lock"></i> Obtenció del codi</h4>
+          </div>
+          <div class="modal-body">
+            <form name="codeForm" ng-submit = "codeForm.$valid" novalidate>
+
+                <div class="form-group" ng-class="{ 'has-error': codeForm.DNI.$touched && codeForm.DNI.$invalid }">
+
+                  <label><i class = "glyphicon glyphicon-credit-card"></i> DNI</label>
+                  <input type="text" name="DNI" class="form-control input-login"
+                                        ng-model="$parent.DNI"
+                                        ng-minlength="9"
+                                        ng-maxlength="10"
+                                        dni-validity
+                                        required>
+
+                  <div class="help-block" ng-messages="codeForm.DNI.$error" ng-if="codeForm.DNI.$touched">
+                    <p ng-message="minlength">El DNI ha de tenir 9 caràcters.</p>
+                    <p ng-message="maxlength">El DNI és massa llarg.</p>
+                    <p ng-message="dniValidator">DNI erròni, format no vàlid.</p>
+                    <p ng-message="required">DNI requerit.</p>
+                  </div>
+                </div>
+
+                <div class="form-group spacer-top" ng-class="{ 'has-error': codeForm.phoneNumber.$touched && codeForm.phoneNumber.$invalid }">
+
+                  <label><i class = "glyphicon glyphicon-phone"></i> Número de telèfon mòbil</label>
+                  <input type="text" name="phoneNumber" class="form-control input-login"
+                                        ng-model="$parent.phoneNumber"
+                                        ng-pattern = "/^\d{9}$/"
+                                        required>
+
+                  <div class="help-block" ng-messages="codeForm.phoneNumber.$error" ng-if="codeForm.phoneNumber.$touched">
+                    <p ng-message="pattern">Número de telèfon mòbil erròni, format no vàlid.</p>
+                    <p ng-message="required">Número de telèfon mòbil requerit.</p>
+                  </div>
+                </div>
+          </form>
+        
+          </div>
+          <div class="modal-footer dni-footer">
+             <button type="button" ng-click="close()" class="btn btn-primary opened" data-dismiss="modal" ng-disabled = "!codeForm.$valid">Eviar</button>
+            <button type="button" ng-click="cancel()" class="btn">Cancel·lar</button>
+          </div>
+        </div>
+    </div>
+</div>

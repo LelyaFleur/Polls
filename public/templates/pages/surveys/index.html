@@ -1,0 +1,48 @@
+<div class = "margins">
+    <div class="row" ng-show = "empty">
+       <div class= "col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3"> 
+            <div class="message-blue" ng-repeat="survey in surveys | filter: {state: 0} | orderBy: 'publishDate.startDate'| limitTo:1">
+            <p>Propera votació: <b><i>{{survey.title}}</i></b>.</p>
+            <p>Comença en <b><i><timer countdown="getCountdown(survey)" interval="1000" language = "ca">{{dayUnit}}&nbsp;</timer></i></b></p>
+            
+            </div>
+       </div>
+    </div>
+    <div class="row ">    
+        <div class= "col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3"> 
+        	<div class="panel-group" id="accordionResults">
+    			<div class="panel panel-primary" ng-repeat="survey in surveys | filter: {state: 2} | orderBy: 'publishDate.endDate'">
+        			<div class="panel-heading panel-heading-closed accordion-toggle collapsed" data-toggle="tooltip" title = "Consulta tancada">
+        				<h4 class="panel-title">
+           					 <a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordion, #accordionResults" data-target="#collapseResults{{$index}}">
+            				{{survey.title}}</a>
+            				<i class = "glyphicon glyphicon-ok pull-right"></i>
+          				</h4>
+        			</div>
+        			<div id="collapseResults{{$index}}" class="panel-collapse collapse">
+        				<survey-results class="panel-body" survey="selectedSurvey" export="false"></survey-results>
+        			</div>
+        		</div>
+        	</div>	
+    		
+    		<div class="panel-group" id="accordion">
+    			<div class="panel panel-success" ng-repeat="survey in surveys | filter: {state: 1} | orderBy: 'publishDate.endDate' track by survey._id">
+        			<div class="panel-heading panel-heading-opened accordion-toggle collapsed" data-toggle="tooltip" title = "Consulta oberta">
+        				<h4 class="panel-title">
+           					 <a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordion, #accordionResults" data-target="#collapse{{$index}}">
+            				{{survey.title}}</a>
+            				<i class = "glyphicon glyphicon-hourglass pull-right"></i>
+            				<!--<div class = "pull-right timePhrase">
+    	  		 				<timer class = "collapse" id = "timer{{$index}}" countdown="getCountdown(survey)" interval="1000" language = "ca">{{dayUnit}}&nbsp;</timer> 
+    	  		 			</div> -->
+          				</h4>
+        			</div>
+        			<div id="collapse{{$index}}" class="panel-collapse collapse">
+        				<survey survey="survey" start = "getCountdown(survey)" class="panel-body"></survey>
+        			</div>
+        		</div>
+        	</div>
+    	</div>
+     </div>
+</div>
+

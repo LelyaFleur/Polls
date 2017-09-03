@@ -1,0 +1,70 @@
+
+<form name = "surveyForm"  ng-submit = "surveyForm.$valid && addSurvey(surveys)" novalidate>
+	<div class = "panel panel-danger">
+
+		<div class = "panel-heading panel-heading-pending">
+			<input  type = "text" name = "title"  ng-model = "newSurvey.title"  placeholder = "Formulari sense titol" class = "panel-title new-survey-title" required>
+			<div class="help-block" ng-messages="surveyForm.title.$error" ng-if="surveyForm.title.$touched">
+	            <p ng-message="required">Es requereix el text del titol</p>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<textarea class="form-control auxiliary no-border" rows="2" name = "description" ng-model = "newSurvey.description" placeholder="Descripció del formulari"></textarea>
+			<ul class = "list-group">
+				<li ng-repeat="question in newSurvey.questions" class="list-group-item" my-var = "number = $index+1">
+
+					<div ng-class="{ 'has-error': surveyForm['question'+number].$touched && surveyForm['question'+number].$invalid }" >
+						<textarea class="form-control question no-border" rows="1" name = "question{{number}}" ng-model="question.text" placeholder="Pregunta sense titol" required></textarea>
+					</div>
+					<div class="help-block" ng-messages="surveyForm['question'+number].$error" ng-if="surveyForm['question'+number].$touched">
+		                <p ng-message="required">&nbsp;&nbsp;Es requereix el text de la pregunta</p>
+	        		</div>
+
+	        	</br>
+					<div class="row">
+						<div class="col-md-12">
+							<option-group min-required = "2">
+								<ul class="list-unstyled">
+									<li ng-repeat = "answer in question.choices">
+							    		<input type="radio" name="answer{{number}}">&nbsp;&nbsp;
+							    		<input type="text" class="customInput input-choice" ng-model="answer.text" name="answer{{number}}" placeholder="Opció {{$index+1}}">
+							    		<a ng-click="removeChoice(answer,question.choices)">
+			          						<i class="glyphicon glyphicon-remove remove pull-right" ></i>
+			          					</a>
+							  		</li>
+							  		<li>
+							  			<input type="radio">&nbsp;&nbsp;<a ng-click="addChoice(question.choices)" role="button" class ="darkGrey"><span></span>Afegiu opció</a>
+							  		</li>
+							  		<li>
+							  			<button type="button" class="btn btn-danger pending pull-right" ng-click = "removeQuestion(question)">
+										<span class ="glyphicon glyphicon-trash"></span>
+										</button>
+							  		</li>
+								</ul>
+	    						
+	    						<div class="help-block" ng-messages="surveyForm['answer'+number].$error" ng-if="surveyForm['answer'+number].$touched">
+		                			<p ng-message="optionGroup-minRequired" >La pregunta té menys de dues opcions de resposta.</p>
+		                			<p ng-message="duplicateValidator">Opcions de resposta duplicades</p>
+		    					</div>
+					  		</option-group>
+						</div>
+			  		</div>
+	        	 </li>
+ 			</ul>
+
+			<button type="button" class="btn btn-danger pending pull-left" ng-click="addQuestion()">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+			</br>
+			</br>
+			</br>
+		 	<date-time-picker newSurvey = "newSurvey"></date-time-picker>
+		 	</br>
+		 	</br>
+
+			<input type = "submit" class="btn btn-danger pending pull-right" ng-disabled = "!surveyForm.$valid" value = "Enviar"/>
+		</div>
+
+	</div>
+</form>

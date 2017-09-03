@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-5">
+        <p class="input-group">
+            <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm " ng-model="newSurvey.publishDate.startDate" is-open="open.startDate" enable-time="true" max-date="newSurvey.publishDate.endDate"  placeholder = "Data d'inici"/>
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-danger pending" ng-click="openCalendar($event, 'startDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-5">
+        <p class="input-group">
+            <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" ng-model="newSurvey.publishDate.endDate" is-open="open.endDate" enable-time="true" min-date="newSurvey.publishDate.startDate" placeholder = "Data de fi" />
+        <span class="input-group-btn">
+            <button type="button" class="btn btn-danger pending" ng-click="openCalendar($event, 'endDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+        </p>
+    </div>
+</div>

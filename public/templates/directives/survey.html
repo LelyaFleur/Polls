@@ -1,0 +1,46 @@
+
+<div>
+	<div class = "pull-right time-phrase spacer-bottom">
+		<timer countdown="start" interval="1000" language = "ca">{{dayUnit}}&nbsp;</timer>
+	</div>
+
+	<div class = "row">
+		<div class="col-xs-12">
+			<form name = "surveyForm" ng-submit = "surveyForm.$valid && sendSurvey()" novalidate>
+				<p class = "spacer-l"><i>{{survey.description}}</i></p>
+				</br>
+			    <ol style="font-weight:700;">
+				    <li ng-repeat = "question in survey.questions" ng-init = "number = $index" class ="darkGrey questionSize">
+				     <b> {{question.text}}</b><br>
+				      <div ng-repeat = "answer in question.choices" class="darkGrey choiceSize">
+
+				      	<input type="radio" name="answer{{number+1}}"  ng-value = "answer._id" ng-disabled="!canVote" ng-model = "answers[number]" ng-required = "true" id="answer_{{answer._id}}_{{question._id}}" required><label  for="answer_{{answer._id}}_{{question._id}}" style="font-weight:500;color:#111!important;">{{answer.text}}</label>
+
+
+
+				       <!-- <input type="radio" name="answer{{number+1}}"  ng-value = "answer._id" ng-disabled="!canVote" ng-model = "answers[number]" ng-required = "true" / > {{answer.text}}<br>-->
+				      </div>
+					  </br>
+				    </li>
+				</ol>
+				<div class="col-xs-3 col-xs-offset-9 col-md-2 col-md-offset-10" ng-show = "canVote">
+					<input type = "submit" class="btn btn-primary opened pull-right" ng-disabled = "!surveyForm.$valid" value = "Enviar"/>
+				</div>
+		    </form>
+		</div>
+	</div>
+
+	<div class = "row">
+
+		<div class="col-xs-4 col-xs-offset-8 col-md-3 col-md-offset-9 ">
+			<div ng-show = "!canVote">
+				<button class = "btn btn-primary opened pull-right" ng-click="showPopup()">Participar</button>
+			</div>
+		</div>
+
+	</div>
+
+	<!--<p ng-if = "state == 0" class="message-green">{{message}}</p>
+	<p ng-if = "state == 1" class="message-red">{{message}}</p>-->
+	<p class ="time-phrase margin-time-phrase spacer-top">La consulta es tancarà a les : {{survey.publishDate.endDate | date:'medium'}}</p>
+</div>

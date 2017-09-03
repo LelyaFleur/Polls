@@ -1,0 +1,214 @@
+<!--<div class="margins">
+	
+	<div class="row">	
+		<div class= "col-xs-12 col-sm-1 col-md-3"> 
+       		 <button class="btn btn-primary closed spacer-bottom pull-right" ng-csv = "getSubscriptions()" csv-header="['Correu electrònic']" filename="subscripcio.csv" data-toggle="tooltip" title="Obtenir la llista de subscripció"><i class ="glyphicon glyphicon-list-alt" ></i></button>
+
+    	</div>	
+	  	<div class= "col-xs-12 col-sm-10 col-md-6">
+			<div class="panel-group" id="accordionClosed">
+				<div class="panel panel-primary" ng-repeat="survey in surveys | filter: {state: 2}| orderBy: 'publishDate.endDate'">
+		    		<div class="panel-heading panel-heading-closed accordion-toggle collapsed" data-toggle="tooltip" title = "Consulta tancada">
+		    			<h4 class="panel-title">
+		       			<a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordionClosed, #accordionOpened, #accordionPending" data-target="#collapseResults{{$index}}">
+		        				{{survey.title}}</a>
+		        		<i class = "glyphicon glyphicon-ok pull-right"></i>
+		      		</h4>
+		    		</div>
+		    		<div id="collapseResults{{$index}}" class="panel-collapse collapse">
+		    			<survey-results class="panel-body" survey="selectedSurvey" export="true"></survey-results>
+		    		</div>
+	    		</div>
+	    	</div>
+
+			<div class="panel-group" id="accordionOpened">
+				<div class="panel panel-success" ng-repeat="survey in surveys | filter: {state: 1} | orderBy: 'publishDate.endDate'">
+		    		<div class="panel-heading panel-heading-opened accordion-toggle collapsed" data-toggle="tooltip" title = "Consulta oberta">
+		    			<h4 class="panel-title">
+		       			<a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordionClosed, #accordionOpened, #accordionPending" data-target="#collapse{{$index}}" style = "width: 85%;">
+		        				{{survey.title}}</a>
+		        		<i class = "glyphicon glyphicon-hourglass pull-right"></i>
+		      		</h4>
+		    		</div>
+		    		<div id="collapse{{$index}}" class="panel-collapse collapse">
+		    			<survey-preview survey="selectedSurvey" countdown = "getCountdown(survey)" votes = "getTotalVotes(survey._id)" class="panel-body"></survey-preview>
+		    		</div>
+	    		</div>
+	    	</div>
+
+			<div class="panel-group" id="accordionPending">
+				<div class="panel panel-danger" ng-repeat="survey in surveys | filter: {state: 0} | orderBy: 'publishDate.startDate'">
+		    		<div class="panel-heading panel-heading-pending accordion-toggle collapsed" title = "Consulta pendent">
+		    			<h4 class="panel-title">
+		       			<a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordionClosed, #accordionOpened, #accordionPending" data-target="#collapsePending{{$index}}">
+		        				{{survey.title}}</a>
+		        		<a ng-click="removeSurvey(survey)">
+		  					<span class="glyphicon glyphicon-remove pull-right"></span>
+		  				</a>
+		      		</h4>
+		    		</div>
+						
+		    		<div id="collapsePending{{$index}}" class="panel-collapse collapse">
+		    			<survey-preview survey="selectedSurvey" countdown = "getCountdown(survey)" class="panel-body"></survey-preview>
+		    		</div>
+	    		</div>
+		    </div>
+		    <button class="btn btn-danger pending" ng-click="toggleShowForm()" data-toggle="tooltip" title="Nova consulta"><span class="glyphicon glyphicon-plus" ng-show ="!showForm"></span><span class="glyphicon glyphicon-minus" ng-show ="showForm"></span>
+		    </button>
+		</div>		
+	</div>
+	</br>
+	<div class= "row spacer-new-poll" >
+		<div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3" id="newPoll">
+			<new-survey surveys = "surveys" ng-show="showForm"></new-survey>
+		</div>
+	</div>	
+</div>-->
+ 
+<div flex-xs flex-gt-md="70"  style ="margin:0 auto; padding: 20px 10px 0 10px;" >
+		<div layout ="row" layout-align ="end center" style ="margin-top:20px;margin-bottom:20px;" flex>                       
+            <md-button  class="md-raised md-primary" ng-click ="addPollDialog($event)">
+            	Afeigir consulta
+            </md-button>
+            <md-button  class="md-icon-button" ng-click='$root.logout()'>
+            	<i class="material-icons">exit_to_app</i>
+            </md-button>
+        </div>
+
+
+
+
+			<div class="panel-group" id="accordionClosed">
+				<div class="panel panel-primary" ng-repeat="poll in polls | filter: {state: 2}">
+		    		<div class="panel-heading panel-heading-closed accordion-toggle collapsed" data-toggle="tooltip" title = "Consulta tancada">
+		    			<h4 class="panel-title">
+		       			<a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordionClosed, #accordionOpened, #accordionPending" data-target="#collapseResults{{$index}}">
+		        				{{poll.title}}</a>
+		        		<i class = "glyphicon glyphicon-ok pull-right"></i>
+		      		</h4>
+		    		</div>
+		    		<div id="collapseResults{{$index}}" class="panel-collapse collapse">
+		    			<md-grid-list flex 
+                md-cols="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:1" md-gutter="8px" md-gutter-gt-sm="20px" style="overflow-y:auto;">
+
+                <md-grid-tile 
+                    md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals | orderBy:'-votes'" ng-style="proposal.image != '' && {'background-image':'url(img/'+proposal.image+')'}" style ="background-size: cover;" ng-class ="getClass($index, true)">
+                    <!-- style ="background-image: url({{proposal.imageUrl}});background-size: contain;" -->
+                   <md-grid-tile-header>
+                        <h3 ng-click="showProposalDialog($event, proposal)"><b>{{proposal.short_title}}</b>
+                         
+                        </h3>
+                       
+                    </md-grid-tile-header>
+                  
+                         <p style="padding:10px;cursor: pointer;outline:none; font-size:18px; background-color:rgba(0,0,0,0.38);border-radius: 10px; color:white; margin-left:10px; margin-right:10px; "  ng-click="showProposalDialog($event, proposal, 2)" >
+                        <i style ="font-size:24px;" ng-show ="proposal.votes > 0">{{proposal.votes * 100 / poll.totalVotes | number : 2}}% ({{proposal.votes}} <span ng-show ="proposal.votes === 1">vot)</span><span ng-show ="proposal.votes > 1">vots)</span></i>  <span style ="font-size:24px;" ng-show ="proposal.votes == 0">0%</span> </p>
+                          <i class="material-icons" ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal, poll, $event)" style ="font-size: 148px!important;">{{proposal.icon}}<md-tooltip md-direction="bottom" style="font-size:18px;">{{proposal.title}}</md-tooltip> </i>
+                       
+                    <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
+                        
+                        <p style="margin-top:5px;">{{proposal.cost}}</p>
+                    </md-grid-tile-footer>
+                                 
+                </md-grid-tile>
+               
+            </md-grid-list>
+             <div layout ="row" layout-align ="end center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
+               <md-button ng-show ="poll.state ===2" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>
+               <md-button  class="md-raised md-primary" ng-disabled ="poll.totalVotes === 0" ng-click ="showResultDialog($event, poll)">Resultats</md-button>
+            </div>
+          
+
+		    		</div>
+	    		</div>
+	    	
+
+</div>	
+
+<div class="panel-group" id="accordionOpened">
+	<div class="panel panel-success" ng-repeat="poll in polls | orderBy: 'publishDate.endDate'" style = "border: 0px;">
+    		<div class="panel-heading panel-heading-opened accordion-toggle collapsed" ng-show ="poll.state === 0 || poll.state === 1" data-toggle="tooltip" title = "Consulta oberta">
+    			<h4 class="panel-title">
+       			<a data-toggle="collapse" data-parent="#accordionClosed, #accordionOpened, #accordionPending" ng-click="" data-target="#collapse{{$index}}" style = "width: 85%;">
+        				{{poll.title}}</a>
+        		<i class = "glyphicon glyphicon-hourglass pull-right"></i>
+      		</h4>
+    		</div>
+    		<div id="collapse{{$index}}" class="panel-collapse collapse">
+    					<md-grid-list flex 
+        md-cols="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:1" md-gutter="8px" md-gutter-gt-sm="20px" style="overflow-y:auto;">
+
+	        	<md-grid-tile 
+		            md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals" ng-style="proposal.image != '' && {'background-image':'url(img/'+proposal.image+')'}" style ="background-size: cover;" ng-class ="getClass($index, true)">
+		            <!-- style ="background-image: url({{proposal.imageUrl}});background-size: contain;" -->
+		           <md-grid-tile-header>
+		                <h3 ng-click="showProposalDialog($event, proposal, 2)"><b>{{proposal.short_title}}</b>
+		                 
+		                </h3>
+		               
+		            </md-grid-tile-header>
+		          
+		                 
+		                 <p style="padding:10px;cursor: pointer;outline:none; font-size:18px; background-color:rgba(0,0,0,0.38);border-radius: 10px; color:white; margin-left:10px; margin-right:10px; "  ng-click="showProposalDialog($event, proposal, 2)" >
+                        <i style ="font-size:24px;" ng-show ="proposal.votes > 0">{{proposal.votes * 100 / poll.totalVotesProposal | number : 2}}% ({{proposal.votes}} <span ng-show ="proposal.votes === 1">vot)</span><span ng-show ="proposal.votes > 1">vots)</span></i>  <span style ="font-size:24px;" ng-show ="proposal.votes == 0">0%</span> </p>
+		               
+		            <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
+		                
+		                <p style="margin-top:5px;">{{proposal.cost}}</p>
+		            </md-grid-tile-footer>
+		                         
+	        	</md-grid-tile>
+			</md-grid-list>
+			<div layout ="row" layout-align ="end center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
+           		<md-button  class="md-raised md-primary" ng-show ="poll.totalVotes > 0" ng-click ="showResultDialog($event, poll)">Monitoritzar</md-button>
+        	</div>
+		</div>
+	</div>
+
+	<button ng-show = "export" class = "btn btn-primary closed pull-left" type="button" ng-csv="exportVotes(poll)" csv-header="[poll.title]" filename="consulta.csv" data-toggle="tooltip" title="Obtenir llistat de votants"><i class="glyphicon glyphicon-export"></i></button>
+	<button ng-show = "export" class = "btn btn-primary closed pull-left spacer-left" type ="button" ng-csv = "exportNonParticipants(poll)" csv-header="[poll.title]" filename="nohanvotat.csv" data-toggle="tooltip" title="Obtenir llistat de gent que no ha votat"><span class ="glyphicon glyphicon-list-alt"></span></button>
+</div>
+
+
+
+	  	
+
+			<!--<div class="panel-group" id="accordionOpened">
+				<div class="panel panel-success" ng-repeat="survey in surveys | filter: {state: 1} | orderBy: 'publishDate.endDate'">
+		    		<div class="panel-heading panel-heading-opened accordion-toggle collapsed" data-toggle="tooltip" title = "Consulta oberta">
+		    			<h4 class="panel-title">
+		       			<a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordionClosed, #accordionOpened, #accordionPending" data-target="#collapse{{$index}}" style = "width: 85%;">
+		        				{{survey.title}}</a>
+		        		<i class = "glyphicon glyphicon-hourglass pull-right"></i>
+		      		</h4>
+		    		</div>
+		    		<div id="collapse{{$index}}" class="panel-collapse collapse">
+		    			<survey-preview survey="selectedSurvey" countdown = "getCountdown(survey)" votes = "getTotalVotes(survey._id)" class="panel-body"></survey-preview>
+		    		</div>
+	    		</div>
+	    	</div>
+
+			<div class="panel-group" id="accordionPending">
+				<div class="panel panel-danger" ng-repeat="survey in surveys | filter: {state: 0} | orderBy: 'publishDate.startDate'">
+		    		<div class="panel-heading panel-heading-pending accordion-toggle collapsed" title = "Consulta pendent">
+		    			<h4 class="panel-title">
+		       			<a data-toggle="collapse" ng-click="selectSurvey(survey);" data-parent="#accordionClosed, #accordionOpened, #accordionPending" data-target="#collapsePending{{$index}}">
+		        				{{survey.title}}</a>
+		        		<a ng-click="removeSurvey(survey)">
+		  					<span class="glyphicon glyphicon-remove pull-right"></span>
+		  				</a>
+		      		</h4>
+		    		</div>
+						
+		    		<div id="collapsePending{{$index}}" class="panel-collapse collapse">
+		    			<survey-preview survey="selectedSurvey" countdown = "getCountdown(survey)" class="panel-body"></survey-preview>
+		    		</div>
+	    		</div>
+		    </div>
+		    <button class="btn btn-danger pending" ng-click="toggleShowForm()" data-toggle="tooltip" title="Nova consulta"><span class="glyphicon glyphicon-plus" ng-show ="!showForm"></span><span class="glyphicon glyphicon-minus" ng-show ="showForm"></span>
+		    </button>
+		</div>		-->
+	</div>
+
+
+</div>

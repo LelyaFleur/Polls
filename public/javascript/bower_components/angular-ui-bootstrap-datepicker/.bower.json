@@ -1,0 +1,38 @@
+{
+  "name": "angular-ui-bootstrap-datepicker",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "kkashpur",
+      "email": "kashpur.kostya@gmail.com"
+    }
+  ],
+  "description": "Extension for angular ui-bootstrap with possibility of showing more than 1 month in daypicker",
+  "main": "./src/datepicker.js",
+  "keywords": [
+    "angular",
+    "twitter",
+    "bootstrap",
+    "ui-bootstrap",
+    "datepicker"
+  ],
+  "license": "MIT",
+  "homepage": "http://colonb.org/angular-ui-bootstrap-datepicker",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/colonB/angular-ui-bootstrap-datepicker"
+  },
+  "dependencies": {
+    "angular-bootstrap": "git://github.com/angular-ui/bootstrap-bower"
+  },
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "93f1a91d36e1eb26d2d2d57649914897ea24eeb8"
+  },
+  "_source": "git://github.com/colonB/angular-ui-bootstrap-datepicker.git",
+  "_target": "^0.1.0",
+  "_originalSource": "angular-ui-bootstrap-datepicker",
+  "_direct": true
+}

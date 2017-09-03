@@ -1,0 +1,19 @@
+<div class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header message-header">
+        <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">
+Codi</h4>
+      </div>
+      <div class="modal-body text-center">
+        <p>El codi s'ha enviat al teu mobil</p>
+        <h1>{{code}}</h1>
+         <h1>{{info.code}}</h1>
+      </div>
+      <div class="modal-footer message-footer">
+        <button type="button" ng-click="close('Yes')" class="btn btn-primary opened" data-dismiss="modal" >OK</button>
+      </div>
+    </div>
+  </div>
+</div>

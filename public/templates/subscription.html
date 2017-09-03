@@ -1,0 +1,31 @@
+<div class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header subscription-header">
+        <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">
+Subscripció</h4>
+      </div>
+      <div class="modal-body">
+        <p>Envia el teu correu electrònic per rebre notificacions sobre noves consultes populars.</p>
+        <form name="subscribeForm" ng-submit = "subscribeForm.$valid" novalidate>
+          <div class="form-group" ng-class="{ 'has-error': subscribeForm.subscription.$touched && subscribeForm.subscription.$invalid }">
+            <label>Correu electrònic</label>
+            <input type="email" name="subscription" class="form-control" placeholder = "Correu electrònic"
+                ng-model="subscription"
+                ng-minlength="5"
+                ng-maxlength="100" required>
+
+            <div class="help-block" ng-messages="subscribeForm.subscription.$error" ng-if="subscribeForm.subscription.$touched">
+                <div ng-messages-include="templates/messages.html"></div>
+            </div>
+          </div>
+        
+        </form>
+      </div>
+      <div class="modal-footer subscription-footer">
+        <button type="button" ng-click="close()" class="btn btn-primary closed" data-dismiss="modal" ng-disabled = "!subscribeForm.$valid">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>

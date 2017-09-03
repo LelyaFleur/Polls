@@ -1,0 +1,25 @@
+<div>
+	<div class="row">		
+		<div class = "pull-right time-phrase spacer-r spacer-bottom">
+			<timer countdown="countdown" interval="1000" language = "ca">{{dayUnit}}&nbsp;</timer>
+		</div> 			
+	</div>
+	<!--<div ng-if = "survey.state === 1">
+		<p>{{survey.totalVotes}}</p>
+	</div>-->
+	<div class="row">
+		<p class = "spacer-l spacer-r"><i>{{survey.description}}</i></p>		
+	</div> 	
+	<div>
+		<ul class="list-unstyled">
+			<li  ng-repeat = "question in survey.questions">
+			  <h4 class = "darkGrey"><b>{{$index+1}}. {{question.text}}</b></h4>     
+			  	<ul class="list-group">
+				 	<li class="list-group-item darkGrey choiceSize" ng-class="getClass(survey)" ng-repeat = "answer in question.choices">{{answer.text}}</li>  
+				</ul>
+			</li>
+		<ul>
+
+	</div>
+	<p class ="time-phrase margin-time-phrase spacer-top">{{survey.publishDate.startDate | date:'medium'}} - {{survey.publishDate.endDate | date:'medium'}}</p> 
+</div>

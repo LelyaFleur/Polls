@@ -1,0 +1,91 @@
+ <form name = "pollForm" style = "border:none !important;"  ng-submit = "createPoll()" novalidate class="md-no-momentum">
+
+        <md-input-container class="md-block" style ="font-size: 18px; margin-bottom: 0px;">
+                <label>Title</label>
+                <input type="text" ng-model="newPoll.title"  name="poll_title" required>
+                <div ng-messages="pollForm.poll_title.$error">
+                    <div ng-message="required">Es requereix el text del titol</div>
+                </div>
+            </md-input-container>
+            <p>Propostas:</p>
+        <md-card ng-repeat = "proposal in newPoll.proposals" flex="70" style ="margin: 0 auto; margin-bottom:15px; padding:15px;">
+        <p>Proposta {{$index + 1}}</p>
+            <md-input-container class="md-block" style ="font-size: 18px; margin-bottom: 0px;">
+                <label>Short title</label>
+                <input type="text" ng-model="proposal.short_title" md-select-on-focus name="short_title" required>
+                <div ng-messages="pollForm.short_title.$error">
+                    <div ng-message="required">Es requereix el text del titol</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" style ="font-size: 18px; margin-bottom: 0px;" >
+                  <label>Title</label>
+                  <textarea ng-model="proposal.title" rows="3" md-select-on-focus name="title" required></textarea>
+                  <div ng-messages="pollForm.title.$error">
+                      <div ng-message="required">Es requereix el text del titol</div>
+                  </div>
+            </md-input-container>
+            <md-input-container class="md-block" style ="font-size: 18px; margin-bottom: 0px;" >
+                <label>Object</label>
+                <textarea ng-model="proposal.object" rows="3" md-select-on-focus name="object" required></textarea>
+                <div ng-messages="pollForm.object.$error">
+                    <div ng-message="required">Es requereix el text del titol</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" style ="font-size: 18px; margin-bottom: 0px;" >
+                <label>Description</label>
+                <textarea ng-model="proposal.description" rows="3" md-select-on-focus name="object" required></textarea>
+                <div ng-messages="pollForm.object.$error">
+                    <div ng-message="required">Es requereix el text del titol</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" style ="font-size: 18px; margin-bottom: 0px;" >
+                <label>Location</label>
+                <textarea ng-model="proposal.location" rows="3" md-select-on-focus name="location" required></textarea>
+                <div ng-messages="pollForm.location.$error">
+                    <div ng-message="required">Es requereix el text del titol</div>
+                </div>
+            </md-input-container>
+              <md-input-container class="md-block" style ="font-size: 18px; margin-bottom: 0px;" >
+                <label>Cost</label>
+                <input type="text" ng-model="proposal.cost" rows="3" md-select-on-focus name="cost" required></input>
+                <div ng-messages="pollForm.cost.$error">
+                    <div ng-message="required">Es requereix el text del titol</div>
+                </div>
+            </md-input-container>
+            
+        </md-card>
+
+        <div layout ="row" layout-align ="end center" style ="margin-top:20px;margin-bottom:20px;" flex>                       
+                       <md-button  class="md-raised md-primary" ng-click ="addBudget()">Add budget</md-button>
+                    </div>
+
+                   
+  <div layout="row">
+    
+      <p style = "font-size:24px; margin-top:25px;">Data d'inici':</p>
+       <md-input-container>
+         <label>Data d'inici'</label>
+          <md-datepicker ng-model="newPoll.publishDate.startDate" md-max-date="newPoll.publishDate.endDate"></md-datepicker>
+        </md-input-container> 
+    
+            
+       
+          <p style = "font-size:24px; margin-top:25px;">Data de fi:</p>
+             <md-input-container>
+                   <label>Data de fi</label>
+                    <md-datepicker md-min-date="newPoll.publishDate.startDate"  ng-model="newPoll.publishDate.endDate"></md-datepicker>
+                  </md-input-container> 
+       
+            
+  </div> 
+  
+   
+<div layout ="row" layout-align ="end center">
+           <md-button type="submit" class="md-raised md-primary" >Crear</md-button>
+          </div>
+
+
+
+          
+        
+      </form>

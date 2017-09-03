@@ -1,0 +1,77 @@
+<!--<md-dialog aria-label="Mango (Fruit)">
+ 
+ <form ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>Propostes Pressupostos Participatius</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="closeDialog()">
+            <i class="material-icons">clear</i>
+          </md-button>
+        </div>
+      </md-toolbar>
+     <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch style ="padding:25px;margin:0px;">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{currentBudget.title}}</span>            
+            </md-card-title-text>                 
+          </md-card-title>
+           <p><b>Objectiu:</b> {{currentBudget.object}}</p> 
+            <p><b>Descripció:</b> {{currentBudget.description}}</p>
+            <p><b>Ubicació:</b> {{currentBudget.location}}</p> 
+            <p><b>Cost aproximat:</b> {{currentBudget.cost}}</p>
+        </md-card>
+       <md-dialog-actions layout="row">
+      <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button>
+      <span flex></span>
+      <md-button ng-click="answer('not useful')">
+       Not Useful
+      </md-button>
+      <md-button ng-click="answer('useful')">
+        Useful
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>-->
+
+
+
+<md-dialog class ="budget-dialog" aria-label="Proposta">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{currentProposal.short_title}}</h2>
+
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog()">
+            <i class="material-icons">clear</i>
+          </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+      <div layout = "row" >
+         <h2>{{currentProposal.title}}</h2><span flex></span> <i class="material-icons" style ="font-size:64px;" ng-click = "checkProposal(currentProposal)" ng-show ="state === 1 || state === 0"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al cercle</md-tooltip>{{currentProposal.icon}}  </i>
+       </div>
+        
+        
+       
+       <!--   <p><b>Objectiu:</b> {{currentProposal.object}}</p> -->
+            <p><b>Descripció:</b> {{currentProposal.description}}</p>
+            <div layout = "row" layout-align="center center">
+            <img flex-xs flex-gt-md="50" ng-src="img/{{currentProposal.image}}" style ="margin: 0 auto!important;padding:15px;">
+             </div>
+            <p><b>Ubicació:</b> {{currentProposal.location}}</p> 
+            <p><b>Cost aproximat:</b> {{currentProposal.cost}}</p>
+      </div>
+    </md-dialog-content>
+
+  <!-- <md-dialog-actions layout="row">
+      <md-button ng-click="closeDialog()">Tancar</md-button>
+    </md-dialog-actions>-->
+    
+  </form>
+</md-dialog>

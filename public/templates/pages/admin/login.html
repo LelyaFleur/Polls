@@ -1,0 +1,54 @@
+<!--<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 spacer-login">
+  <div class="panel panel-default">
+      <div class="panel-heading panel-heading-login">
+        <h3 class = "text-center">Entrar</h3>
+      </div>
+      <div class="panel-body">
+        <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+          <form class="form" ng-submit="login()">
+            <div class="form-group">
+              <label>Nom d'usuari</label>
+              <input type="text" class="form-control input-login"  name="username" ng-model="loginForm.username" required>
+            </div>
+            <div class="form-group">
+              <label>Contrassenya</label>
+              <input type="password" class="form-control input-login" name="password" ng-model="loginForm.password" required >
+              </div>
+              <div>
+                <button type="submit" class="btn btn-default panel-login pull-right" ng-disabled="disabled">Entrar</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>-->
+
+<div layout = "row" id="popupContainer">
+   
+    <md-card flex-xs flex-gt-md="50" style ="margin: 0 auto; margin-top:80px; padding:40px;" >
+      <div layout="row"  style ="padding:20px;">        
+         <h1 class="md-toolbar-tools">Entrar</h1>
+      </div>   
+      <form name = "loginForm" ng-submit = "loginForm.$valid && login()" novalidate class="md-no-momentum" style ="padding:30px;">
+          <md-input-container class="md-block" style ="font-size: 18px;">
+                  <label>Nom d'usuari</label>
+                  <input type="text" name="username" ng-model="username" required>
+                  <div ng-messages="loginForm.username.$error">
+                    <div ng-message="required">Es requereix el nom d'usuari</div>
+                  </div>
+          </md-input-container> 
+
+          <md-input-container class="md-block" style ="font-size: 18px;">
+                  <label>Contrassenya</label>
+                  <input type="password" name="password" ng-model="password" required>
+                  <div ng-messages="loginForm.password.$error">
+                    <div ng-message="required">Es requereix la contrassenya</div>
+                  </div>
+          </md-input-container>
+          <div layout ="row" layout-align ="end center">
+            <md-button type="submit" class="md-raised md-primary">Entrar</md-button>
+          </div>
+        <!--  <a ng-click="showResetPassword($event)">Has oblidat la contrasenya?</a>-->
+      </form>
+    </md-card>
+  </div>
+

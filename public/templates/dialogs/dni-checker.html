@@ -1,0 +1,80 @@
+<md-dialog  aria-label="Dni-checker">
+ <form name="dniForm" ng-submit = "dniForm.$valid && verifyUser($event)" novalidate>  
+<md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Comprovador d’Identitat</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog()">
+            <i class="material-icons">clear</i>
+          </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content" style ="padding:10px;">
+        
+       <md-input-container style ="margin-left:10px;padding-left:10px;">
+          <label>DNI/NIE</label><md-tooltip md-direction="bottom" style="font-size:14px;">DNI (8 dígits+lletra sense espais ni guions), NIE (X,Y o Z + 7dígit + lletra sense espais ni guions)</md-tooltip>
+          <input ng-model ="user.DNI" name ="identity" required>
+          <div ng-messages="dniForm.identity.$error">
+                
+                <div ng-message="required">Has d'entrar una identificació!</div>               
+            </div>
+        </md-input-container>
+        <md-input-container style ="display:block; margin-top:20px;" layout ="row" flex>
+           <label>Data de naixement</label>
+            <md-datepicker ng-model = "user.birthdate" md-current-view="year" md-open-on-focus name ="dateField" required></md-datepicker>
+            <div ng-messages="dniForm.dateField.$error">
+                <div ng-message="valid">El valor introduït no és una data o el format no és el correcte (dd-mm-aaaa)!</div>
+                <div ng-message="required">Has d'entrar la data!</div>               
+            </div>
+        </md-input-container>  
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button type ="submit">Comprovar</md-button>
+    </md-dialog-actions>
+    </form>
+     <!-- <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header dni-header">
+            <button type="button" class="close" ng-click="cancel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"><i class="glyphicon glyphicon-lock"></i> Comprovador de DNI</h4>
+          </div>
+          <div class="modal-body">
+            <form name="dniForm" ng-submit = "dniForm.$valid" novalidate>           
+             
+              <div class="form-group">
+                <label><i class = "glyphicon glyphicon-credit-card"></i> DNI</label>
+                  <ui-select ng-model="user.dni" theme="bootstrap" search-enabled="false" tagging="tagHandler" style="width: 100%;"
+                   autofocus = "true" required>
+                    <ui-select-match placeholder="DNI">{{$select.selected.dni}}</ui-select-match>
+                    <ui-select-choices repeat="item in $root.census | filter: $select.search track by item.dni">
+                      <span ng-bind="item.dni"></span><span class="glyphicon glyphicon-ok pull-right" ng-show="item.isMember"></span><span class="glyphicon glyphicon-remove pull-right" ng-show="!item.isMember"></span>-->
+                      <!--<div ng-bind-html="item.dni | highlight: $select.search"><span class="glyphicon glyphicon-ok pull-right"></span></div> -->                     
+            <!--        </ui-select-choices>
+                  </ui-select>                  
+              </div>
+                <div class="form-group" ng-class="{ 'has-error': dniForm.code.$touched && dniForm.code.$invalid }">
+
+                  <label><i class = "glyphicon glyphicon-eye-close"></i> Codi</label>
+                  <input type="password" name="code" class="form-control input-login"
+                                        ng-model="code"
+                                        ng-pattern = "/^\d{4}$/"              
+                                        required>
+
+                  <div class="help-block" ng-messages="dniForm.code.$error" ng-if="dniForm.code.$touched">
+                    <p ng-message="pattern">Codi ha de tenir 4 dígits</p>
+                    <p ng-message="required">Codi requerit.</p>
+                  </div>
+                </div>
+                <a ng-click = "getCode()" role="button" class ="darkGrey">Obtenir el codi&nbsp; <i class= "glyphicon glyphicon-info-sign" data-toggle="tooltip" title="Pots utilitzar només un número de telèfon per persona. Un cop tinguis el codi, pots utilitzar-lo per altres consultes."></i></a>
+             </form>
+        
+          </div>
+          <div class="modal-footer dni-footer">
+             <button type="button" ng-click="close()" class="btn btn-primary opened" data-dismiss="modal" ng-disabled = "!dniForm.$valid">Acceptar</button>
+            <button type="button" ng-click="cancel()" class="btn">Cancel·lar</button>
+          </div>
+        </div>
+    </div>-->
+</md-dialog>

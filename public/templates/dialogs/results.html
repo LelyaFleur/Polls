@@ -1,0 +1,65 @@
+<md-dialog class ="result-dialog" aria-label="Proposta">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Resultats</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog()">
+            <i class="material-icons">clear</i>
+          </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+       <!-- <div google-chart chart="poll.chartObject" flex style="height:500px; width:100%;font-size: 14px;"></div>
+         <p style = "font-size: 20px;">Cost total: <b>{{poll.totalCost}}.000€</b></p>
+         <p style = "font-size: 20px;">Vots totals: <b>{{poll.totalVotesProposal}}</b></p>
+         <p style = "font-size: 20px;">Número de persones que han votat: <b>{{poll.totalVotes}}</b></p>
+         <p style = "font-size: 20px;">Percentatge de participació: <b>{{poll.totalVotes/$root.censusCount*100 | number : 2}}%</b></p>
+         <p style = "font-size: 20px;">Cens total: <b>{{$root.censusCount}}</b></p>-->
+
+
+        
+ 
+ 
+      <ul class="list-group" ">
+      <li class="list-group-item darkGrey choiceSize" ng-repeat = "proposal in poll.proposals | orderBy:'-votes'" style = "border:none;""><div class = "row" style="margin-top:10px;">{{proposal.title}} &nbsp;<b>({{proposal.votes}}&nbsp;<span ng-show ="proposal.votes <= 1">vot)</span><span ng-show ="proposal.votes > 1">vots)</span> </b>
+        <!--<span class="label label-primary results" style = "vertical-align: middle;margin-top: 5px;  background-color: #25408F;">{{answer.votes}}</span>-->
+        </div>
+        <div class="row">
+          <!--<div class="progress spacer-top">
+            <div class="progress-bar progress-bar-primary results" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{answer.votes/survey.totalVotes*100}}%;">
+              {{answer.votes/survey.totalVotes*100|number:1}}%
+            </div>
+          </div>-->
+          <div class="progress-bar-wrapper">
+            <progress value="{{proposal.votes/poll.totalVotes*100}}" max="100">
+          </progress><span class="progress-value" style = "color:#111!important;"> {{proposal.votes/poll.totalVotes*100|number:1}}%</span>
+        </div>  
+        </div>
+
+      </li>
+    </ul>
+   <p style = "font-size: 20px;">Cost total: <b>{{poll.totalCost}}.000€</b></p>
+         <p style = "font-size: 20px;">Vots totals: <b>{{poll.totalVotesProposal}}</b></p>
+         <p style = "font-size: 20px;">Número de persones que han votat: <b>{{poll.totalVotes + 11}}</b></p>
+         <p style = "font-size: 20px;">Vots nuls emesos: <b>11</b></p>
+         <p style = "font-size: 20px;">Percentatge de participació: <b>{{(poll.totalVotes+11)/$root.censusCount*100 | number : 2}}%</b></p>
+         <p style = "font-size: 20px;">Cens total: <b>{{$root.censusCount}}</b></p>
+
+ 
+</div>
+
+        
+      </div>
+    </md-dialog-content>
+
+  <!-- <md-dialog-actions layout="row">
+      <md-button ng-click="closeDialog()">Tancar</md-button>
+    </md-dialog-actions>-->
+    
+  </form>
+</md-dialog>
+
+ 
