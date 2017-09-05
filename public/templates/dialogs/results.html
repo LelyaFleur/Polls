@@ -41,11 +41,11 @@
 
       </li>
     </ul>
-   <p style = "font-size: 20px;">Cost total: <b>{{poll.totalCost}}.000€</b></p>
+  <!-- <p style = "font-size: 20px;">Cost total: <b>{{poll.totalCost}}.000€</b></p>-->
          <p style = "font-size: 20px;">Vots totals: <b>{{poll.totalVotesProposal}}</b></p>
-         <p style = "font-size: 20px;">Número de persones que han votat: <b>{{poll.totalVotes + 11}}</b></p>
+         <p style = "font-size: 20px;">Número de persones que han votat: <b>{{poll.totalVotes}}</b></p>
          <p style = "font-size: 20px;">Vots nuls emesos: <b>11</b></p>
-         <p style = "font-size: 20px;">Percentatge de participació: <b>{{(poll.totalVotes+11)/$root.censusCount*100 | number : 2}}%</b></p>
+         <p style = "font-size: 20px;">Percentatge de participació: <b>{{(poll.totalVotes)/$root.censusCount*100 | number : 2}}%</b></p>
          <p style = "font-size: 20px;">Cens total: <b>{{$root.censusCount}}</b></p>
 
  

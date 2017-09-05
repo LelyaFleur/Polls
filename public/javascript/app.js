@@ -244,9 +244,10 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
   $scope.currentProposal = undefined;
   $scope.state = undefined;
   
-  function showProposalDialog(ev, proposal, state) {
+  function showProposalDialog(ev, proposal, poll, state) {
     $scope.state = state;
     $scope.currentProposal = proposal;
+    $scope.poll = poll;
     var parentEl = angular.element(document.querySelector('#popupContainer'));
     alert = $mdDialog.alert({
       parent: parentEl,
@@ -419,7 +420,20 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
 .controller('DialogController', function($scope, $mdDialog) {
   //alert( this.closeDialog );
  
-  
+    function showAlert(ev, title, message) {
+
+        $mdDialog.show(
+          $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title(title)
+            .textContent(message)
+            .ariaLabel('Message')
+            .ok('Ok')
+            .targetEvent(ev)
+        );
+      };
+
     $scope.closeDialog = function() {
       $mdDialog.hide();
     };
@@ -430,7 +444,7 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
         return classname;
   }
 
-    $scope.checkProposal = function(proposal) {
+ /*   $scope.checkProposal = function(proposal) {
       proposal.checked = !proposal.checked;
       if(proposal.checked) {
         proposal.icon = "check_circle";
@@ -440,7 +454,38 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
         
         proposal.icon = "radio_button_unchecked";
       }
-}
+    };*/
+
+     $scope.checkProposal = function(proposal, poll, ev) {
+
+      var numChecked = 0;
+      angular.forEach(poll.proposals, function(proposal){
+        if(proposal.checked) {
+          numChecked ++;
+        }
+        
+      });
+
+      if(numChecked < 3) {
+        proposal.checked = !proposal.checked;
+       if(proposal.checked) {
+            proposal.icon = "check_circle";
+            
+       }
+        else {
+           
+          proposal.icon = "radio_button_unchecked";
+         
+       }
+      } else if(proposal.checked) {
+        proposal.checked = !proposal.checked;
+        
+        proposal.icon = "radio_button_unchecked";
+        
+      } else {
+        showAlert(ev, 'Atenciò', 'Només es poden seleccionar 3 propostes!')
+      }
+  }
 
    
 })
