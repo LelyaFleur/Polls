@@ -6,11 +6,17 @@ var submissionSchema = new mongoose.Schema({
 	dni: String
 });
 
+var imageSchema = new mongoose.Schema({
+	_id:false,
+	name : String,
+	image_footer: String
+});
+
 
 var proposalSchema = new mongoose.Schema({
 		
  	short_title: String,
- 	image: String,
+ 	images: [imageSchema],
     title: String,
     object: String,
     description: String,

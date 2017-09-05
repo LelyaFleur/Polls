@@ -54,16 +54,17 @@
     <md-dialog-content>
       <div class="md-dialog-content">
       <div layout = "row" >
-         <h2>{{currentProposal.title}}</h2><span flex></span> <i ng-class= "changeClick(currentProposal.checked)" style ="font-size:64px;" ng-click = "checkProposal(currentProposal)" ng-show ="state === 1 || state === 0"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al tick</md-tooltip>{{currentProposal.icon}}  </i>
+         <h2>{{currentProposal.title}}</h2><span flex></span> <i class="material-icons" style ="font-size:64px;" ng-click = "checkProposal(currentProposal)" ng-show ="state === 1 || state === 0"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al cercle</md-tooltip>{{currentProposal.icon}}  </i>
        </div>
         
         
        
-       <!--   <p><b>Objectiu:</b> {{currentProposal.object}}</p> -->
+       <!--   <p><b>Objectiu:</b> {{currentProposal.object}}</p> layout-align="center center"-->
             <p><b>Descripció:</b> {{currentProposal.description}}</p>
-            <div layout = "row" layout-align="center center">
-            <img flex-xs flex-gt-md="50" ng-src="img/{{currentProposal.image}}" style ="margin: 0 auto!important;padding:15px;">
+            <div layout ="row"  layout-align="center center" ng-repeat = "image in currentProposal.images">
+            <img flex-xs flex-gt-md="50" ng-src="img/{{image.name}}" style ="padding:15px;">
              </div>
+             <p style ="text-align: center;"><i>{{currentProposal.images[0].image_footer}}</i></p>
             <p><b>Ubicació:</b> {{currentProposal.location}}</p> 
             <p><b>Cost aproximat:</b> {{currentProposal.cost}}</p>
       </div>

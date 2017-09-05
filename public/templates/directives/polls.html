@@ -13,7 +13,7 @@
                 md-cols="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1"  md-gutter="8px" md-gutter-gt-sm="20px" md-row-height="150px" >
 
                 <md-grid-tile 
-                    md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals"  ng-class ="getClass($index, proposal.checked)" ng-style="proposal.image != '' && {'background-image':'url(img/'+proposal.image+')'}" style ="height:100%!important; background-size: cover;">
+                    md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals"  ng-class ="getClass($index, proposal.checked)" ng-style="proposal.images[0].name != '' && {'background-image':'url(img/'+proposal.images[0].name+')'}" style ="height:100%!important; background-size: cover;">
                     <!-- style ="background-image: url({{proposal.imageUrl}});background-size: contain;" style ="background-image: url({{proposal.image}});background-size: cover;" -->
                    <md-grid-tile-header>
                         <h3 ng-click="showProposalDialog($event, proposal, poll.state)"><b>{{proposal.short_title}} ({{proposal.cost}})</b>
@@ -58,7 +58,7 @@ de setembre (ambdós inclosos). </i> </p>
     md-gutter="8px" md-gutter-gt-sm="20px" >
 
             <md-grid-tile ng-class="getClass($index)"
-                md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals | orderBy:'-votes'" ng-style="proposal.image != '' && {'background-image':'url(img/'+proposal.image+')'}" style ="height:100%!important; background-size: cover;opacity:1!important;">
+                md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals | orderBy:'-votes'" ng-style="proposal.images[0].name != '' && {'background-image':'url(img/'+proposal.images[0].name+')'}" style ="height:100%!important; background-size: cover;opacity:1!important;">
                 <!--style ="background-image: url({{proposal.image}});background-size: cover; opacity:1!important;"-->
                <md-grid-tile-header>
                     <h3 ng-click="showProposalDialog($event, proposal, poll.state)"><b>{{proposal.short_title}}</b></h3>
