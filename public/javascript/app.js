@@ -623,7 +623,7 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
 
 
     		} else if(data.data === "3") {
-    			showAlert(ev, 'Error!', "Aquesta identificació d'usuari no es troba al padró. Assegurat que tens 16 o més anys i que estàs empadronat abans del dia 6 d’abril de 2017.");
+    			showAlert(ev, 'Error!', "Aquesta identificació d’usuari no es troba al padró. Assegura’t que has complert els 16 anys abans del 08/07/2017 i que estàs empadronat a Cassà de la Selva abans d’aquesta data.");
     		}
     		// res.send("2"); // has already participated
               //              res.send("1"); //is not in the census
