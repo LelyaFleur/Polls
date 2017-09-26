@@ -4,7 +4,7 @@
         <div layout ="row" layout-align ="center center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
                 <md-button  class="md-raised md-warn" ng-click ="$root.showInstructionsDialog($event)" >Instruccions per votar</md-button>
         </div>
-   <div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 1 || poll.state === 2" style ="margin-top:20px;">
+   <div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 1 || poll.state === 0" style ="margin-top:20px;">
 
 
       <!--  <h2 style= "padding-left: 5px;">{{poll.title}}</h2>-->
@@ -49,32 +49,32 @@
              <p style ="font-size:18px;"><i>El període per votar començarà el dijous 7 de setembre i finalitzà el diumenge 24
 de setembre (ambdós inclosos). </i> </p>
 </div> 
-<!--<div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 2"  style ="margin-top:20px;">-->
+<div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 2"  style ="margin-top:20px;">
 
   <!--  <h2 style= "padding-left: 5px;">{{poll.title}}</h2>-->
-  <!--      <md-grid-list flex 
+       <md-grid-list flex 
             md-cols="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
     md-row-height-gt-md="1:1" md-row-height="150px"
     md-gutter="8px" md-gutter-gt-sm="20px" >
 
             <md-grid-tile ng-class="getClass($index)"
-                md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals | orderBy:'-votes'" ng-style="proposal.images[0].name != '' && {'background-image':'url(img/'+proposal.images[0].name+')'}" style ="height:100%!important; background-size: cover;opacity:1!important;">-->
+                md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals | orderBy:'-votes'" ng-style="proposal.images[0].name != '' && {'background-image':'url(img/'+proposal.images[0].name+')'}" style ="height:100%!important; background-size: cover;opacity:1!important;">
                 <!--style ="background-image: url({{proposal.image}});background-size: cover; opacity:1!important;"-->
-             <!--  <md-grid-tile-header>
+              <md-grid-tile-header>
                     <h3 ng-click="showProposalDialog($event, proposal, poll, poll.state)"><b>{{proposal.short_title}}</b></h3>
                 </md-grid-tile-header>
                     <div style="" layout ="row">
                        <p style="padding:10px;cursor: pointer;outline:none; font-size:18px; background-color:rgba(0,0,0,0.38);border-radius: 10px; color:white; margin-left:10px; margin-right:10px; "  ng-click="showProposalDialog($event, proposal, poll,  poll.state)">
                         <i style ="font-size:24px;" ng-show ="proposal.votes !== 0">{{proposal.votes * 100 / poll.totalVotes | number : 2}}% ({{proposal.votes}} <span ng-show ="proposal.votes === 1">vot)</span><span ng-show ="proposal.votes > 1">vots)</span></i>  <span style ="font-size:24px;" ng-show ="poll.state ===2 && proposal.votes === 0">0%</span> </p>
                     
-                   </div>-->
+                   </div>
                     
              <!--   <div layout = "column"    layout-align="center center">
                     <h3 ng-click="showProposalDialog($event, proposal)"><b>{{proposal.short_title}}</b></h3>
                     <p style ="padding:15px;margin-top:15px;"><i>{{proposal.title}}</i></p>  
                     <i ng-class= "checkPoll(proposal.checked)" style ="font-size: 84px!important;" ng-click = "proposal.checked = !proposal.checked;">done</i> 
                 </div>-->
-              <!--  <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
+               <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
                     
                     <p style="margin-top:5px;">{{proposal.cost}}</p>
                 </md-grid-tile-footer>
@@ -86,5 +86,5 @@ de setembre (ambdós inclosos). </i> </p>
            <md-button  class="md-raised md-primary"  ng-click ="showResultDialog($event, poll)">Resultats</md-button>
         </div>
             
-  </div> -->  
+  </div>  
 </div>
