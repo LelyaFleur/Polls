@@ -161,15 +161,16 @@ angular.module('VotesProject').config(['$routeProvider', '$locationProvider', '$
     };
 
 
-    Poll.getCensusNumber() 
+   /* Poll.getCensusNumber() 
         .then(function(data) {
           $rootScope.censusCount = data.data.count;
           console.log("census:" +  $rootScope.censusCount); 
         }, function(err){
           console.log(err);
-    });
+    });*/
 
-    $rootScope.showInstructionsDialog = showInstructionsDialog;      
+    $rootScope.showInstructionsDialog = showInstructionsDialog;   
+    $rootScope.showFAQDialog = showFAQDialog;    
 
     function showInstructionsDialog(ev) {
     
@@ -190,6 +191,26 @@ angular.module('VotesProject').config(['$routeProvider', '$locationProvider', '$
           alert = undefined;
         });
   }
+
+    function showFAQDialog(ev) {
+    
+      var parentEl = angular.element(document.querySelector('#popupContainer'));
+      alert = $mdDialog.alert({
+        parent: parentEl,
+        targetEvent: ev,        
+        templateUrl:'templates/dialogs/FAQ.html',
+        clickOutsideToClose:true,
+        bindToController: true,
+        controllerAs: 'ctrl',
+        controller: 'DialogController'
+      });
+      
+      $mdDialog
+        .show( alert )
+        .finally(function() {
+          alert = undefined;
+        });
+    }
 
   
  

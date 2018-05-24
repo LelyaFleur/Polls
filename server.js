@@ -22,9 +22,11 @@
     var Poll = require('./models/poll');
 
     var server = null;
+    
     var io = null; // Socket io instance
 
     mongoose.connect('mongodb://localhost:27017/cassa');
+
 
     function startPoll(poll) {
         var id = poll._id;
@@ -58,12 +60,10 @@
                     console.log("state changed to 2....");
                     poll.state = 2; 
                     poll.proposals.forEach(function(proposal) {
-                        proposal.submissions = [];
-                       
+                        proposal.submissions = [];                       
                     });              
                     poll.save();
                     io.sockets.emit('status', { status: 2, id: poll._id, poll: poll });
-                  
                 });
             }, time);
     }
@@ -137,7 +137,7 @@
          var now = new Date();
          console.log("now:" + now);
         // use mongoose to get all polls in the database
-        Poll.find(null, {submissions : 0}, function(err, polls) {
+        Poll.find(null, function(err, polls) {
             
             polls.forEach(function(poll) {
                 console.log("publish date start:" + poll.publishDate.startDate);
@@ -283,7 +283,7 @@
 
     function getAge(dateString, endDate) {
         var parts = dateString.split('/');
-        var birthDate = new Date(parts[2],parts[0]-1,parts[1]);       
+        var birthDate = new Date(parts[2],parts[1]-1,parts[0]);       
              
         var age = endDate.getFullYear() - birthDate.getFullYear();        
         var m = endDate.getMonth() - birthDate.getMonth();       
@@ -367,13 +367,14 @@
         var birthdate = req.body.birthdate.toString();
         console.log("decrypted DNI: " + DNI);
         console.log("birhdate " + birthdate);
+        var date = new Date("May 5, 2018");
 
         Poll.find({_id: inquiryId, submissions: {$elemMatch: {dni : DNI}}}, function(err, inquiry) {
           
           if (err) res.send(err);
                  
-          
-            Census.find({dni: DNI}, function(err, doc) {
+           
+                Census.find({dni: DNI}, function(err, doc) {
                 if (err) res.send(err); 
                 if(inquiry.length > 0 && doc.length > 0 && doc[0].birthdate === birthdate){             
                     res.send("2"); // has already participated           
@@ -381,16 +382,25 @@
                     console.log("doc " + doc);
                     console.log("birhdate doc " + doc[0].birthdate);
                     if (doc[0].birthdate === birthdate) {
-                         res.send("0"); // can vote
-                       }
+                        if(getAge(doc[0].birthdate, date) >= 16) {
+                            res.send("0"); // can vote
+                        } else {
+                            res.send("3"); //is not in the census
+                        }
+                         
+                       
+                    }
                        else {
                             res.send("1"); //birthdate is not correct
-                       }
+                    }
                     
-                } else {                    
+                }
+                else {
                     res.send("3"); //is not in the census
                 }
-            });           
+                
+             });
+                
         
             
         });
@@ -503,13 +513,17 @@
         var id = req.body.pollId;
         var dni = req.body.dni;
         var decryptedDNI = CryptoJS.AES.decrypt(req.body.dni, generateSecretWord()).toString(CryptoJS.enc.Utf8); 
-
+        
         
         var submission_element = {dni : decryptedDNI};
         console.log("submission:" + submission_element);
         var submissions = req.body.submissions;
         console.log("submissions:" +  req.body.submissions);
-        Poll.update({_id: id}, {'$addToSet' : {'submissions': {'dni': decryptedDNI}}}).exec(function( err, data ){
+        Census.findOne({'dni': decryptedDNI}, function(err, neighbour) {
+           if(err) console.log(err);
+           console.log("neighbour:" + neighbour);
+           var subm = neighbour;           
+           Poll.update({_id: id}, {'$addToSet' : {'submissions': subm}}).exec(function( err, data ){
             if(err) console.log(err);
            
             if(data) {
@@ -521,7 +535,7 @@
                         console.log("bId:" + bId);
                                                
                         doc.proposals.id(bId).votes += 1;
-                        doc.proposals.id(bId).submissions.push(submission_element);
+                        doc.proposals.id(bId).submissions.push(subm);
                   });
                    
                     doc.totalVotes += 1;
@@ -533,7 +547,9 @@
             } else {
                 res.json({ message: 'Did not update!' });
             }
-        });
+        }); 
+        })
+        
     });
     
      // change votes

@@ -35,7 +35,8 @@ var PollSchema = new mongoose.Schema({
 	submissions: [submissionSchema],
 	publishDate: { startDate: Date, endDate: Date },
 	state: Number,
-	totalVotes: Number
+	totalVotes: Number,
+	census: Number
 });
 
 // return the model

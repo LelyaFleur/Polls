@@ -42,19 +42,17 @@
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>{{currentProposal.short_title}}</h2>
-
         <span flex></span>
         <md-button class="md-icon-button" ng-click="closeDialog()">
             <i class="material-icons">clear</i>
-          </md-button>
+        </md-button>
       </div>
     </md-toolbar>
 
     <md-dialog-content>
       <div class="md-dialog-content">
       <div layout = "row" >
-         <h2>{{currentProposal.title}}</h2><span flex></span> <i class="material-icons" style ="font-size:64px;" ng-click = "checkProposal(currentProposal, poll, $event)" ng-show ="state === 1 || state === 0"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al cercle</md-tooltip>{{currentProposal.icon}}  </i>
+         <h2>{{currentProposal.title}}</h2><span flex></span> <i class="material-icons" style ="font-size:64px;" ng-click = "checkProposal(currentProposal, poll, $event)" ng-show ="state === 1"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al cercle</md-tooltip>{{currentProposal.icon}}  </i>
        </div>
         
         
@@ -65,7 +63,7 @@
             <img flex-xs flex-gt-md="50" ng-src="img/{{image.name}}" style ="padding:15px;">
              </div>
              <p style ="text-align: center;"><i>{{currentProposal.images[0].image_footer}}</i></p>
-            <p><b>Ubicació:</b> {{currentProposal.location}}</p> 
+            <p ng-if = "currentProposal.location"><b>Ubicació:</b> {{currentProposal.location}}</p> 
             <p><b>Cost aproximat:</b> {{currentProposal.cost}}</p>
       </div>
     </md-dialog-content>

@@ -1,10 +1,13 @@
 <div ng-cloak>
-        <h2 style ="text-align: center; padding-top:20px;">PRESSUPOSTOS PARTICIPATIUS CASSÀ DE LA SELVA 2017</h2>  
-        <h3 style ="text-align: center;">Selecciona un màxim de 3 propostes i vota! </h3>
-        <div layout ="row" layout-align ="center center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
-                <md-button  class="md-raised md-warn" ng-click ="$root.showInstructionsDialog($event)" >Instruccions per votar</md-button>
+        <h2 style ="text-align: center; padding-top:20px;">PRESSUPOSTOS PARTICIPATIUS DE CASSÀ DE LA SELVA 2018.</h2> 
+        <h2 style ="text-align: center; padding-top:20px;">VOTACIÓ FINAL</h2>  
+        <h3 style ="text-align: center;">SELECCIONA UN MÀXIM DE 3 PROPOSTES (les que vulguis) I VOTA.</h3>
+        <h3 style ="text-align: center;">60.000€ A LES TEVES MANS!</h3>
+        <div layout ="row" layout-align ="center center" style ="margin-top:20px;margin-bottom:20px;" flex > 
+            <md-button  class="md-raised md-warn" ng-click ="$root.showInstructionsDialog($event)" style ="font-size:12px!important;" >Instruccions per votar</md-button>
+            <md-button  class="md-raised md-warn" ng-click ="$root.showFAQDialog($event)" style ="font-size:12px!important;">Preguntes freqüents</md-button>
         </div>
-   <div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 1 || poll.state === 0" style ="margin-top:20px;">
+   <div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 1 || poll.state === 0" style ="margin-top:20px;" ng-if ="poll.title === 'Pressupostos participatius de Cassà de la Selva 2018'">
 
 
       <!--  <h2 style= "padding-left: 5px;">{{poll.title}}</h2>-->
@@ -46,10 +49,10 @@
             <!--   <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "true">Votar</md-button>-->
             </div>
           <!--  <p style ="font-size:18px;"><i>Aquesta consulta podrà ser votada entre els dies 12 de juny i 2 de juliol (ambdós inclosos).</i> </p>-->
-             <p style ="font-size:18px;"><i>El període per votar començarà el dijous 7 de setembre i finalitzà el diumenge 24
-de setembre (ambdós inclosos). </i> </p>
+             <p style ="font-size:18px;"><i>El període per votar començarà el dilluns dia 4 de juny i finalitzarà el
+                    diumenge dia 24 de juny 2018 (ambdós inclosos). </i> </p>
 </div> 
-<div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 2"  style ="margin-top:20px;">
+<div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 2"  style ="margin-top:20px;" ng-if ="poll.title === 'Pressupostos participatius de Cassà de la Selva 2018'">
 
   <!--  <h2 style= "padding-left: 5px;">{{poll.title}}</h2>-->
        <md-grid-list flex 

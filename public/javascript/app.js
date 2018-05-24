@@ -109,78 +109,7 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
       });
 
       return deferred.promise;
-    };      
-
-
-
-
-
-  /*  $scope.budgets = [
-    {
-      short_title: "Fils Aeris",
-      title: "Eliminar el cablejat aeri dels carrers del centre (“fils aeris”)",
-      object: "Millorar l’atractiu del centre històric",
-      description: "En alguns carrers del centre de la ciutat s’hi poden veure cables i fils d’electricitat i telèfon que creuen de façana a façana. L’actuació consisteix en eliminar el cablejat aeri i soterrar-lo.",
-      location: "Centre històric (carrer major, carrer princesa i carrer canonge)",
-      cost: "250.000€",
-      checked: false
-
-    },
-    {
-      short_title: "Recorregut Del Barri",
-      title: "Adequació del recorregut del barri de la cullera al ceip espuny",
-      object: "Crear un camí escolar segur",
-      description: "Es tracta de reparar i arranjar les voreres dels trams més perillosos del recorregut i instal·lar les mesures de seguretat apropiades per tal de permetre que els nens i nenes del barri puguin anar a l’escola per un recorregut adaptat i segur.",
-      location: "El recorregut començaria a la plaça de Santa Marta, passant pel carrer Bellcaire, l’avinguda Maria Gràcia, el passatge de la pesseta, i el carrer Puig del bé fins al CEIP Espuny",
-      cost: "150.000€",
-      checked: false
-    },
-    {
-      short_title: "CAMINAR I FER SALUT",
-      title: "CAMINAR I FER SALUT: FER UNA RUTA I NATURALITZAR ELS ESPAIS DEL LA MUNTANYA DEL LLAIR",
-      object: "Millorar el contacte entre la ciutat i l’espai natural del poble mitjançant la renaturalització dels espais de la muntanya per afavorir-ne el gaudi dels ciutadants i promocionar els usos saludables vinculats a la natura",
-      description: "Senyalitzar el recorregut, adaptar i arranjar els diferents trams per fer-los més accessibles i millorar la il·luminació d’algunes zones",
-      location: "Espais naturals de la muntanya del Llair",
-      cost: "100.000€",
-      checked: false
-    }/*,
-    {
-      short_title: "PUNTS DE RECÀRREGA PER A VEHICLES ELÈCTRICS",
-      title: "INSTAL·LACIÓ DE PUNTS DE RECÀRREGA PER A VEHICLES ELÈCTRICS",
-      object: "Preparar al municipi per a la sostenibilitat ambiental en matèria de mobilitat i incentivar l’ús del vehicle elèctric",
-      description: "Instal·lació de 4 punts de recàrrega per a vehicles elèctrics.",
-      location: "Els punts de recàrrega s’instal·larien als següents indrets: Carrer major, Ronda Ferran Mall, Plaça de l’església, Plaça de l’Ajuntament",
-      cost: "75.000€",
-      checked: false
-    },
-    {
-      short_title: "PARC PER A GOSSOS",
-      title: "CREACIÓ D’UN PARC PER A GOSSOS",
-      object: "Disposar d’un espai per tal que la gent que té gossos els pugui dur deslligats",
-      description: "Condicionar i adequar un terreny públic del poble per tal que els gossos puguin anar deslligats, fer exercici i socialitzar-se",
-      location: "Zona verda de les palmeres",
-      cost: "35.000€",
-      checked: false
-    },
-     {
-      short_title: "IL·LUMINAR PASSOS DE VIANANTS",
-      title: "IL·LUMINAR PASSOS DE VIANANTS",
-      object: "Millorar la seguretat dels vianants",
-      description: "Es tractaria d’il·luminant els passos de vianants amb més afluència del poble amb la finalitat d’evitar accidents i millorar la seguretat.",
-      location: "Il·luminació dels 30 passos de vianants amb més freqüència de pas del poble",
-      cost: "50.000€",
-      checked: false
-    }/*,
-    {
-      short_title: "IRENOVAR LA PLAÇA CATALUNYA",
-      title: "RENOVAR LA PLAÇA CATALUNYA",
-      object: "Dignificar una de les places més importants i més usades del municipi",
-      description: "Renovar l’espai de jocs, el mobiliari urbà, les instal·lacions de jocs infantil, les zones verdes i els labavos",
-      location: "Plaça de Catalunya",
-      cost: "GRAN",
-      checked: false
-    },
-  ];*/
+    };
 
   $scope.getClass = function(index, checked) {
     var  className;
@@ -623,7 +552,7 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
 
 
     		} else if(data.data === "3") {
-    			showAlert(ev, 'Error!', "Aquesta identificació d’usuari no es troba al padró. Assegura’t que has complert els 16 anys abans del 08/07/2017 i que estàs empadronat a Cassà de la Selva abans d’aquesta data.");
+    			showAlert(ev, 'Error!', "Aquesta identificació d’usuari no es troba al padró. Assegura’t que has complert els 16 anys abans del 5 de maig de 2018 i que estàs empadronat a Cassà de la Selva abans d’aquesta data.");
     		}
     		// res.send("2"); // has already participated
               //              res.send("1"); //is not in the census

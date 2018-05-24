@@ -23,7 +23,7 @@
         
  
  
-      <ul class="list-group" ">
+    <ul class="list-group">
       <li class="list-group-item darkGrey choiceSize" ng-repeat = "proposal in poll.proposals | orderBy:'-votes'" style = "border:none;""><div class = "row" style="margin-top:10px;">{{proposal.title}} &nbsp;<b>({{proposal.votes}}&nbsp;<span ng-show ="proposal.votes <= 1">vot)</span><span ng-show ="proposal.votes > 1">vots)</span> </b>
         <!--<span class="label label-primary results" style = "vertical-align: middle;margin-top: 5px;  background-color: #25408F;">{{answer.votes}}</span>-->
         </div>
@@ -45,8 +45,8 @@
          <p style = "font-size: 20px;">Vots totals: <b>{{poll.totalVotesProposal}}</b></p>
          <p style = "font-size: 20px;">Número de persones que han votat: <b>{{poll.totalVotes}}</b></p>
        <!--  <p style = "font-size: 20px;">Vots nuls emesos: <b>11</b></p>-->
-         <p style = "font-size: 20px;">Percentatge de participació: <b>{{(poll.totalVotes)/$root.censusCount*100 | number : 2}}%</b></p>
-         <p style = "font-size: 20px;">Cens total: <b>{{$root.censusCount}}</b></p>
+         <p style = "font-size: 20px;">Percentatge de participació: <b>{{(poll.totalVotes)/poll.census*100 | number : 2}}%</b></p>
+         <p style = "font-size: 20px;">Cens total: <b>{{poll.census}}</b></p>
 
  
 </div>
