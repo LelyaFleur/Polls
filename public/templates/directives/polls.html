@@ -19,7 +19,7 @@
                     md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals"  ng-class ="getClass($index, proposal.checked)" ng-style="proposal.images[0].name != '' && {'background-image':'url(img/'+proposal.images[0].name+')'}" style ="height:100%!important; background-size: cover;">
                     <!-- style ="background-image: url({{proposal.imageUrl}});background-size: contain;" style ="background-image: url({{proposal.image}});background-size: cover;" -->
                    <md-grid-tile-header>
-                        <h3 ng-click="showProposalDialog($event, proposal, poll, poll.state)"><b>{{proposal.short_title}} ({{proposal.cost}})</b>
+                        <h3 style ="font-size:12px!important;line-height: normal;" ng-click="showProposalDialog($event, proposal, poll, poll.state)"><b>{{proposal.short_title}} ({{proposal.cost}})</b>
                          
                         </h3>
                        
@@ -64,7 +64,7 @@
                 md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals | orderBy:'-votes'" ng-style="proposal.images[0].name != '' && {'background-image':'url(img/'+proposal.images[0].name+')'}" style ="height:100%!important; background-size: cover;opacity:1!important;">
                 <!--style ="background-image: url({{proposal.image}});background-size: cover; opacity:1!important;"-->
               <md-grid-tile-header>
-                    <h3 ng-click="showProposalDialog($event, proposal, poll, poll.state)"><b>{{proposal.short_title}}</b></h3>
+                    <h3 style ="font-size:12px!important;line-height: normal;" ng-click="showProposalDialog($event, proposal, poll, poll.state)"><b>{{proposal.short_title}}</b></h3>
                 </md-grid-tile-header>
                     <div style="" layout ="row">
                        <p style="padding:10px;cursor: pointer;outline:none; font-size:18px; background-color:rgba(0,0,0,0.38);border-radius: 10px; color:white; margin-left:10px; margin-right:10px; "  ng-click="showProposalDialog($event, proposal, poll,  poll.state)">
