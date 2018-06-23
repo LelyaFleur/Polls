@@ -4,13 +4,15 @@
         <h3 style ="text-align: center;">SELECCIONA UN MÀXIM DE 3 PROPOSTES (les que vulguis) I VOTA.</h3>
         <h3 style ="text-align: center;">60.000€ A LES TEVES MANS!</h3>
         <div layout ="row" layout-align ="center center" style ="margin-top:20px;margin-bottom:20px;" flex > 
-            <md-button  class="md-raised md-warn" ng-click ="$root.showInstructionsDialog($event)" style ="font-size:12px!important;" >Instruccions per votar</md-button>
+           <!-- <md-button  class="md-raised md-warn" ng-click ="$root.showInstructionsDialog($event)" style ="font-size:12px!important;" >Instruccions per votar</md-button>-->
             <md-button  class="md-raised md-warn" ng-click ="$root.showFAQDialog($event)" style ="font-size:12px!important;">Preguntes freqüents</md-button>
         </div>
-   <div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 1 || poll.state === 0" style ="margin-top:20px;" ng-if ="poll.title === 'Pressupostos participatius de Cassà de la Selva 2018'">
+   <div  flex class ="frame-budget" ng-repeat ="poll in polls" style ="margin-top:20px;" ng-if ="poll.title === 'Pressupostos participatius de Cassà de la Selva 2018'">
 
 
-      <!--  <h2 style= "padding-left: 5px;">{{poll.title}}</h2>-->
+      <!--  <h2 style= "padding-left: 5px;">{{poll.title}}</h2>
+        ng-show ="poll.state === 1 || poll.state === 0"
+    -->
          
             <md-grid-list flex 
                 md-cols="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6" md-row-height-gt-md="1:1"  md-gutter="8px" md-gutter-gt-sm="20px" md-row-height="150px" >
@@ -27,7 +29,7 @@
                  <!--  <div layout = "column" layout-align = "center center">
                        <p style="padding:5px;cursor: pointer;outline:none;font-size:14px;color:white;background-color:rgba(0,0,0,0.48);border-radius: 10px;" flex ="65" ng-click="showProposalDialog($event, proposal, poll.state)"><i>{{proposal.title}}</i></p>--> 
                       <!--  <i ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal)">done</i> -->
-                        <i ng-show ="poll.state === 1" class="material-icons" ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal, poll, $event)" style ="font-size: 148px!important;">{{proposal.icon}}<md-tooltip md-direction="bottom" style="font-size:18px;">{{proposal.title}}</md-tooltip> </i>
+                    <!-- uncomment here    <i ng-show ="poll.state === 1" class="material-icons" ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal, poll, $event)" style ="font-size: 148px!important;">{{proposal.icon}}<md-tooltip md-direction="bottom" style="font-size:18px;">{{proposal.title}}</md-tooltip> </i>-->
                  <!--  </div>-->
                                                         
                  <!--   <div layout = "column"    layout-align="center center">
@@ -45,24 +47,23 @@
                     
                    
             <div layout ="row" layout-align ="end center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
-             <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>
+           <!-- uncomment here  <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>-->
             <!--   <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "true">Votar</md-button>-->
             </div>
           <!--  <p style ="font-size:18px;"><i>Aquesta consulta podrà ser votada entre els dies 12 de juny i 2 de juliol (ambdós inclosos).</i> </p>-->
              <p style ="font-size:18px;"><i>El període per votar començarà el dilluns dia 4 de juny i finalitzarà el
                     diumenge dia 24 de juny 2018 (ambdós inclosos). </i> </p>
 </div> 
-<div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 2"  style ="margin-top:20px;" ng-if ="poll.title === 'Pressupostos participatius de Cassà de la Selva 2018'">
+<!--<div  flex class ="frame-budget" ng-repeat ="poll in polls" ng-show ="poll.state === 2"  style ="margin-top:20px;" ng-if ="poll.title === 'Pressupostos participatius de Cassà de la Selva 2018'">
 
-  <!--  <h2 style= "padding-left: 5px;">{{poll.title}}</h2>-->
-       <md-grid-list flex 
+         <md-grid-list flex 
             md-cols="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
     md-row-height-gt-md="1:1" md-row-height="150px"
     md-gutter="8px" md-gutter-gt-sm="20px" >
 
             <md-grid-tile ng-class="getClass($index)"
                 md-rowspan="2" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1" ng-repeat ="proposal in poll.proposals | orderBy:'-votes'" ng-style="proposal.images[0].name != '' && {'background-image':'url(img/'+proposal.images[0].name+')'}" style ="height:100%!important; background-size: cover;opacity:1!important;">
-                <!--style ="background-image: url({{proposal.image}});background-size: cover; opacity:1!important;"-->
+               
               <md-grid-tile-header>
                     <h3 style ="font-size:12px!important;line-height: normal;" ng-click="showProposalDialog($event, proposal, poll, poll.state)"><b>{{proposal.short_title}}</b></h3>
                 </md-grid-tile-header>
@@ -71,12 +72,6 @@
                         <i style ="font-size:24px;" ng-show ="proposal.votes !== 0">{{proposal.votes * 100 / poll.totalVotes | number : 2}}% ({{proposal.votes}} <span ng-show ="proposal.votes === 1">vot)</span><span ng-show ="proposal.votes > 1">vots)</span></i>  <span style ="font-size:24px;" ng-show ="poll.state ===2 && proposal.votes === 0">0%</span> </p>
                     
                    </div>
-                    
-             <!--   <div layout = "column"    layout-align="center center">
-                    <h3 ng-click="showProposalDialog($event, proposal)"><b>{{proposal.short_title}}</b></h3>
-                    <p style ="padding:15px;margin-top:15px;"><i>{{proposal.title}}</i></p>  
-                    <i ng-class= "checkPoll(proposal.checked)" style ="font-size: 84px!important;" ng-click = "proposal.checked = !proposal.checked;">done</i> 
-                </div>-->
                <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
                     
                     <p style="margin-top:5px;">{{proposal.cost}}</p>
@@ -89,5 +84,5 @@
            <md-button  class="md-raised md-primary"  ng-click ="showResultDialog($event, poll)">Resultats</md-button>
         </div>
             
-  </div>  
+  </div> -->
 </div>

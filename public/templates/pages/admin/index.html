@@ -103,7 +103,7 @@
                   
                          <p style="padding:10px;cursor: pointer;outline:none; font-size:18px; background-color:rgba(0,0,0,0.38);border-radius: 10px; color:white; margin-left:10px; margin-right:10px; "  ng-click="showProposalDialog($event, proposal, poll, 2)" >
                         <i style ="font-size:24px;" ng-show ="proposal.votes > 0">{{proposal.votes * 100 / poll.totalVotes | number : 2}}% ({{proposal.votes}} <span ng-show ="proposal.votes === 1">vot)</span><span ng-show ="proposal.votes > 1">vots)</span></i>  <span style ="font-size:24px;" ng-show ="proposal.votes == 0">0%</span> </p>
-                          <!--<i class="material-icons" ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal, poll, $event)" style ="font-size: 148px!important;">{{proposal.icon}}<md-tooltip md-direction="bottom" style="font-size:18px;">{{proposal.title}}</md-tooltip> </i>-->
+                          <i class="material-icons"  ng-show ="poll.current" ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal, poll, $event)" style ="font-size: 148px!important;">{{proposal.icon}}<md-tooltip md-direction="bottom" style="font-size:18px;">{{proposal.title}}</md-tooltip> </i>
                        
                     <md-grid-tile-footer style ="flex-direction: row;padding:10px;">
                         
@@ -114,7 +114,7 @@
                
             </md-grid-list>
              <div layout ="row" layout-align ="end center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
-          <!--    <md-button ng-show ="poll.state ===2" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>-->
+               <md-button ng-show ="poll.current" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>
                <md-button  class="md-raised md-primary" ng-disabled ="poll.totalVotes === 0" ng-click ="showResultDialog($event, poll)">Resultats</md-button>
             </div>
           
