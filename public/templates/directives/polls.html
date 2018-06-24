@@ -29,7 +29,7 @@
                  <!--  <div layout = "column" layout-align = "center center">
                        <p style="padding:5px;cursor: pointer;outline:none;font-size:14px;color:white;background-color:rgba(0,0,0,0.48);border-radius: 10px;" flex ="65" ng-click="showProposalDialog($event, proposal, poll.state)"><i>{{proposal.title}}</i></p>--> 
                       <!--  <i ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal)">done</i> -->
-                    <!-- uncomment here    <i ng-show ="poll.state === 1" class="material-icons" ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal, poll, $event)" style ="font-size: 148px!important;">{{proposal.icon}}<md-tooltip md-direction="bottom" style="font-size:18px;">{{proposal.title}}</md-tooltip> </i>-->
+                       <i ng-show ="poll.state === 1" class="material-icons" ng-class= "changeClick(proposal.checked)" ng-click = "checkProposal(proposal, poll, $event)" style ="font-size: 148px!important;">{{proposal.icon}}<md-tooltip md-direction="bottom" style="font-size:18px;">{{proposal.title}}</md-tooltip> </i>
                  <!--  </div>-->
                                                         
                  <!--   <div layout = "column"    layout-align="center center">
@@ -47,7 +47,7 @@
                     
                    
             <div layout ="row" layout-align ="end center" style ="margin-top:20px;margin-bottom:20px;" flex >                       
-           <!-- uncomment here  <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>-->
+           <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "!optionSelected(poll)">Votar</md-button>
             <!--   <md-button ng-show ="poll.state ===1" class="md-raised md-primary" ng-click ="showDNICheckerDialog($event, poll)" ng-disabled = "true">Votar</md-button>-->
             </div>
           <!--  <p style ="font-size:18px;"><i>Aquesta consulta podrà ser votada entre els dies 12 de juny i 2 de juliol (ambdós inclosos).</i> </p>-->
