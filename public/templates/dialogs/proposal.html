@@ -50,13 +50,12 @@
     </md-toolbar>
 
     <md-dialog-content>
-      <div class="md-dialog-content">
-      <div layout = "row" >
+      <div class="md-dialog-content"> 
+      <div layout = "row" >        
          <h2>{{currentProposal.title}}</h2><span flex></span> <i class="material-icons" style ="font-size:64px;" ng-click = "checkProposal(currentProposal, poll, $event)" ng-show ="state === 1"><md-tooltip md-direction="bottom" style="font-size:14px;">Per seleccionar una proposta fes clic al cercle</md-tooltip>{{currentProposal.icon}}  </i>
        </div>
-        
-        
-       
+       <p ng-if="currentProposal.state && currentProposal.title === 'MILLORAR LA IL·LUMINACIÓ DEL CAMP DE FUTBOL'" style ="color:orange; font-size: 18px;"><b>ESTAT D’EXECUCIÓ:</b> {{currentProposal.state_long}}</p>
+       <p ng-if="currentProposal.state && currentProposal.title !== 'MILLORAR LA IL·LUMINACIÓ DEL CAMP DE FUTBOL'" style ="color:green; font-size: 18px;"><b>ESTAT D’EXECUCIÓ:</b> {{currentProposal.state_long}}</p>
        <!--   <p><b>Objectiu:</b> {{currentProposal.object}}</p> layout-align="center center"-->
             <p><b>Descripció:</b> {{currentProposal.description}}</p>
             <div layout ="row"  layout-align="center center" ng-repeat = "image in currentProposal.images">

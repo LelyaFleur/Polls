@@ -1,8 +1,5 @@
 angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessages', 'ngMaterialDatePicker', 'googlechart', 'angAccordion', 'ui.bootstrap', 'angularFileUpload'])
 
-
-
-
 .controller('PollController', function ($scope, $q, Socket, $timeout, $mdDialog, Poll) {
 
    
@@ -10,8 +7,6 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
     $scope.user = { DNI : undefined,
     	birthdate: undefined    	
     };
-
-    
 
     Poll.all()
     .then(function(polls) {
@@ -36,8 +31,6 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
                   poll.proposals = data.poll.proposals;
                 }
               }
-
-              
                
             });
        
@@ -52,7 +45,24 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
               angular.forEach(poll.proposals, function(proposal) {
                 
                 proposal.icon = "radio_button_unchecked";
+                if(proposal.title === "Tirolina al parc dels Fruiters") {
+                    proposal.state = "actuació ja realitzada";
+                    proposal.state_long = "actuació ja realitzada";
+                }
+                if(proposal.title === "Il·luminar l’últim tram del carrer Empordà") {
+                  proposal.state = "actuació ja realitzada";
+                  proposal.state_long = "actuació ja realitzada";
+                }
+                if(proposal.title === "MILLORAR LA IL·LUMINACIÓ DEL CAMP DE FUTBOL") {
+                  proposal.state = "en licitació ";
+                  proposal.state_long = "en licitació (finalització prevista per al primer semestre de 2019)";
+                }
+                if(proposal.title === "MILLORAR EL SO DEL CAMP DE FUTBOL") {
+                  proposal.state = "actuació ja realitzada";
+                  proposal.state_long = "actuació ja realitzada";
+                }
 
+              
                            
                 var euroSignIndex = proposal.cost.indexOf("€");
                 if(proposal.votes > 0 && euroSignIndex !== -1) {
@@ -83,11 +93,8 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
         if(proposal.checked) {
           numChecked ++;
         }
-        
       });
-      }
-      
-     
+    }
       return numChecked ? true : false;
     };
     
@@ -276,8 +283,6 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
       });
   }
 
-
-
   $scope.closeDialog = function() {
     $mdDialog.hide();
   };
@@ -293,30 +298,24 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
   }
 
   function showAlert(ev, title, message) {
-
-        $mdDialog.show(
-          $mdDialog.alert()
-            .parent(angular.element(document.querySelector('#popupContainer')))
-            .clickOutsideToClose(true)
-            .title(title)
-            .textContent(message)
-            .ariaLabel('Message')
-            .ok('Ok')
-            .targetEvent(ev)
-        );
-      };
-   
-
-
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title(title)
+        .textContent(message)
+        .ariaLabel('Message')
+        .ok('Ok')
+        .targetEvent(ev)
+    );
+  };
 
   $scope.checkProposal = function(proposal, poll, ev) {
-
       var numChecked = 0;
       angular.forEach(poll.proposals, function(proposal){
         if(proposal.checked) {
           numChecked ++;
         }
-        
       });
 
       if(numChecked < 3) {
@@ -339,10 +338,6 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
         showAlert(ev, 'Atenciò', 'Només es poden seleccionar 3 propostes!')
       }
   }
-  
-
-  
-
 
 })
 
@@ -415,8 +410,6 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
         showAlert(ev, 'Atenciò', 'Només es poden seleccionar 3 propostes!')
       }
   }
-
-   
 })
 
 .controller('ResultController', function($scope, $mdDialog, poll) {
@@ -426,8 +419,6 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
     $scope.closeDialog = function() {
       $mdDialog.hide();
     };
-
-   
 })
 
 .controller('UserCheckerController', function($scope, $mdDialog, user, poll, Poll, $filter) {
@@ -556,15 +547,7 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
     		}
     		// res.send("2"); // has already participated
               //              res.send("1"); //is not in the census
-                //    res.send("3"); //is not in the census
-                   
-
-
-
-
-
-
-
+        
     	}, function(err){
     		console.log(err);
     	})

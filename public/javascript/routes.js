@@ -60,9 +60,6 @@ angular.module('VotesProject').config(['$routeProvider', '$locationProvider', '$
         
           deferred.resolve();
         }
-         
-
-
         // Not Authenticated
         else {
           $rootScope.message = 'You need to log in.';
@@ -103,11 +100,16 @@ angular.module('VotesProject').config(['$routeProvider', '$locationProvider', '$
 
     .when('/', {
       // redirect to the survey index
-      redirectTo: '/polls'
+      redirectTo: '/polls-2018'
     })
 
-    .when('/polls', {
-      templateUrl: 'templates/pages/polls/index.html',
+    .when('/polls-2017', {
+      templateUrl: 'templates/pages/polls-2017/index.html',
+      controller: 'PollController'
+    })
+
+    .when('/polls-2018', {
+      templateUrl: 'templates/pages/polls-2018/index.html',
       controller: 'PollController'
     })
     
