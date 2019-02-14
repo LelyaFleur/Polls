@@ -53,6 +53,10 @@ angular.module('VotesProject', ['ngMaterial', 'ngMdIcons', 'ngRoute', 'ngMessage
                   proposal.state = "actuació ja realitzada";
                   proposal.state_long = "actuació ja realitzada";
                 }
+                if(proposal.title === "Parc de Calistenia – Parc de Street Workout") {
+                  proposal.state = "actuació ja realitzada";
+                  proposal.state_long = "actuació ja realitzada";
+                }  
                 if(proposal.title === "MILLORAR LA IL·LUMINACIÓ DEL CAMP DE FUTBOL") {
                   proposal.state = "en licitació ";
                   proposal.state_long = "en licitació (finalització prevista per al primer semestre de 2019)";
