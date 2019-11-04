@@ -15,7 +15,7 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "long-timeout": "^0.1.1",
-    "method-override": "~2.1.2",
+    "method-override": "~2.3.10",
     "moment-timezone": "^0.5.13",
     "mongoose": "^4.4.5",
     "morgan": "^1.7.0",
