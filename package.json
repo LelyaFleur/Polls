@@ -17,7 +17,7 @@
     "long-timeout": "^0.1.1",
     "method-override": "~2.1.2",
     "moment-timezone": "^0.5.13",
-    "mongoose": "^4.4.5",
+    "mongoose": "^4.13.21",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
